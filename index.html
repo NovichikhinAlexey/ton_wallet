@@ -1,16 +1,17 @@
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Привязка TON кошелька через Wallet Connect</title>    
+        <meta charset="utf-8">
+        <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js" defer></script>  <!-- (1) -->
     </head>
     <body>
-        <h1>Привязка TON кошелька</h1>
-        <button id="connectWalletButton">Подключить кошелек</button>
-        <div id="message"></div>
-    
-        <script src="https://cdn.jsdelivr.net/npm/@tonconnect/sdk@0.4.1/dist/tonconnect-sdk.min.js"></script>
-        <script src="ton_wallet_connect.js"></script>
-    
+    <script>
+      window.onload = async () => {
+        const connector = new TonConnectSDK.TonConnect();  // (2)
+        const walletsList = await connector.getWallets();  // (3)
+        
+        console.log(walletsList);
+      }
+    </script>
+    Hello World
     </body>
 </html>
